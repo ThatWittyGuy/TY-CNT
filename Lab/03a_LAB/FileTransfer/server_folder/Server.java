@@ -7,12 +7,16 @@ public class Server {
         ServerSocket serverSocket = new ServerSocket(9000);
         Socket socket = serverSocket.accept();
         System.out.println("Client connected.");
+
         DataInputStream dis = new DataInputStream(socket.getInputStream());
+
         FileOutputStream fos = new FileOutputStream(
-            "E:\\VIT PUNE '27\\T.Y - SEM 1\\Comp Network Tech\\Lab\\02_LAB\\FileTransfer\\server_folder\\t.txt"
+            "E:\\VIT PUNE '27\\T.Y - SEM 1\\Comp Network Tech\\Lab\\03a_LAB\\FileTransfer\\server_folder\\t.txt"
         );
+
         long fileSize = dis.readLong();
         System.out.println("Receiving file of size: " + fileSize + " bytes.");
+
         byte[] buffer = new byte[4096];
         int read;
         long totalRead = 0;
@@ -22,7 +26,8 @@ public class Server {
             System.out.println("Received " + totalRead + " of " + fileSize + " bytes.");
             if (totalRead == fileSize) break;
         }
-        System.out.println("File received and saved to server_folder/t.txt");
+
+        System.out.println("File received and saved to t.txt in the new folder.");
         fos.close();
         dis.close();
         socket.close();
